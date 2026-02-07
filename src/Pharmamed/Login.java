@@ -5,10 +5,8 @@
  */
 package Pharmamed;
 
-/**
- *
- * @author USER29
- */
+import UserDashboard.Account;
+
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -53,6 +51,11 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Password:");
 
         btn_login.setText("Login");
+        btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_loginMouseClicked(evt);
+            }
+        });
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -111,10 +114,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
 try {
-    // 1. Connect to your database file
     java.sql.Connection conn = java.sql.DriverManager.getConnection("jdbc:sqlite:db.db");
     
-    // 2. Search for the user where name and password match
     String sql = "SELECT * FROM tbl_accounts WHERE name=? AND password=?";
     java.sql.PreparedStatement pst = conn.prepareStatement(sql);
     pst.setString(1, txt_username.getText());
@@ -122,17 +123,15 @@ try {
     
     java.sql.ResultSet rs = pst.executeQuery();
     
-    if (rs.next()) {
-        // 3. Success! Get the details for the profile view
-        String uName = rs.getString("name");
-        String uEmail = rs.getString("email");
-        String uType = rs.getString("type");
-
-        // 4. Open the Landing/Profile page and send the data to it
-        landing land = new landing(uName, uEmail, uType);
-        land.setVisible(true);
-        this.dispose(); // Close the login window
-    } else {
+// Locate line 121 in Login.java
+if (rs.next()) {
+    // This creates and opens the Dashboard window instead of Account or Landing
+    UserDashboard.Dashboard dash = new UserDashboard.Dashboard(); 
+    dash.setVisible(true);
+    
+    // This closes the Login window so it doesn't stay open in the background
+    this.dispose(); 
+} else {
         javax.swing.JOptionPane.showMessageDialog(null, "Invalid Username or Password");
     }
     conn.close();
@@ -140,6 +139,10 @@ try {
     javax.swing.JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
 }
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_loginMouseClicked
 
     /**
      * @param args the command line arguments

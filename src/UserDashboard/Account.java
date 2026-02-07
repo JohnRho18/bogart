@@ -1,22 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UserDashboard;
 
-/**
- *
- * @author USER17
- */
 public class Account extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ACCOUNT
-     */
+    String id, name, email, status;
+
+    public Account(String uId, String uName, String uEmail, String uStatus) {
+        initComponents();
+        this.id = uId;
+        this.name = uName;
+        this.email = uEmail;
+        this.status = uStatus;
+
+        txt_id.setText(id);
+        txt_name.setText(name);
+        txt_email.setText(email);
+        txt_status.setText(status);
+    }
+
     public Account() {
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,21 +31,166 @@ public class Account extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JTextField();
+        txt_status = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
+        txt_name = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        dashboard = new javax.swing.JLabel();
+        sales = new javax.swing.JLabel();
+        users = new javax.swing.JLabel();
+        account = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout4.png"))); // NOI18N
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, 60));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report2.png"))); // NOI18N
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, 60));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit2.png"))); // NOI18N
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, 60));
+        getContentPane().add(txt_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 80, -1));
+        getContentPane().add(txt_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 80, -1));
+        getContentPane().add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 80, -1));
+        getContentPane().add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 80, -1));
+
+        jLabel12.setText("ACCOUNT ID:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
+
+        jLabel13.setText("USERNAME:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+
+        jLabel14.setText("EMAIL:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+
+        jLabel15.setText("USER STATUS:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("ACCOUNT SETTINGS");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 70, 60));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
+        jLabel9.setText("jLabel8");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 70, 60));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
+        jLabel10.setText("jLabel8");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 70, 60));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
+        jLabel11.setText("jLabel8");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 230, 140));
+
+        dashboard.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dashboard.setText("DASHBOARD");
+        dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dashboardMouseClicked(evt);
+            }
+        });
+        getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        sales.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        sales.setText("SALES");
+        sales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salesMouseClicked(evt);
+            }
+        });
+        getContentPane().add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        users.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        users.setText("USERS");
+        users.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usersMouseClicked(evt);
+            }
+        });
+        getContentPane().add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        account.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        account.setText("ACCOUNT");
+        account.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accountMouseClicked(evt);
+            }
+        });
+        getContentPane().add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        jLabel2.setBackground(new java.awt.Color(51, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(102, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUE.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 300));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 270, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        Pharmamed.Login log = new Pharmamed.Login();
+        log.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseClicked
+        UserDashboard.Account acc = new UserDashboard.Account();
+        acc.setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_accountMouseClicked
+
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+     new UserDashboard.Dashboard().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }                                    
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {                                     
+        new UserDashboard.Sales().setVisible(true);
+        this.dispose();        // TODO add your handling code here:
+    }                                    
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {                                     
+
+        new UserDashboard.Users().setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dashboardMouseClicked
+
+    private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked
+      
+    }//GEN-LAST:event_salesMouseClicked
+
+    private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usersMouseClicked
 
     /**
      * @param args the command line arguments
@@ -80,5 +229,27 @@ public class Account extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel account;
+    private javax.swing.JLabel dashboard;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel sales;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_name;
+    private javax.swing.JTextField txt_status;
+    private javax.swing.JLabel users;
     // End of variables declaration//GEN-END:variables
 }
