@@ -28,10 +28,17 @@ public boolean authenticate(String sql, Object... values) {
     return false;
 }
 
-    private Connection connectDB() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public Connection connectDB() {
+    try {
+        Class.forName("org.sqlite.JDBC");
+        Connection conn = java.sql.DriverManager.getConnection("jdbc:sqlite:db.db"); 
+        return conn;
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        return null;
     }
-
+}
+    
 
 
 }

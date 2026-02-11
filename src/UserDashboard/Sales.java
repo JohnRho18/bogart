@@ -10,13 +10,16 @@ package UserDashboard;
  * @author USER17
  */
 public class Sales extends javax.swing.JFrame {
+    
+String id, name, email, status;
 
-    /**
-     * Creates new form SALES
-     */
-    public Sales() {
-        initComponents();
-    }
+public Sales(String uId, String uName, String uEmail, String uStatus) {
+    initComponents();
+    this.id = uId;
+    this.name = uName;
+    this.email = uEmail;
+    this.status = uStatus;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,9 +31,9 @@ public class Sales extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         dashboard = new javax.swing.JLabel();
         sales = new javax.swing.JLabel();
-        users = new javax.swing.JLabel();
         account = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -39,78 +42,74 @@ public class Sales extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
+        jLabel11.setText("jLabel8");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 230, 260));
 
         dashboard.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        dashboard.setForeground(new java.awt.Color(0, 153, 153));
+        dashboard.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dashboard.setText("DASHBOARD");
         dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dashboardMouseClicked(evt);
             }
         });
-        getContentPane().add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        jPanel1.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 130, -1));
 
         sales.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        sales.setForeground(new java.awt.Color(0, 153, 153));
+        sales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sales.setText("SALES");
         sales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salesMouseClicked(evt);
             }
         });
-        getContentPane().add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        users.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        users.setText("USERS");
-        users.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                usersMouseClicked(evt);
-            }
-        });
-        getContentPane().add(users, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 130, -1));
 
         account.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        account.setForeground(new java.awt.Color(0, 153, 153));
+        account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         account.setText("ACCOUNT");
         account.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 accountMouseClicked(evt);
             }
         });
-        getContentPane().add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel1.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 130, -1));
 
         jLabel2.setBackground(new java.awt.Color(51, 204, 255));
         jLabel2.setForeground(new java.awt.Color(102, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUE.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 300));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/49579_1.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 300));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/49579.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 270, 300));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 270, 300));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked
-        UserDashboard.Sales sale = new UserDashboard.Sales();
-        sale.setVisible(true);
-        this.dispose();        
+        new UserDashboard.Sales(id, name, email, status).setVisible(true);
+        this.dispose();         
     }//GEN-LAST:event_salesMouseClicked
 
     private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
 
-        new UserDashboard.Dashboard().setVisible(true);
+        new UserDashboard.Dashboard(id, name, email, status).setVisible(true);
         this.dispose(); 
      
                                        
 
     }//GEN-LAST:event_dashboardMouseClicked
 
-    private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
-      new UserDashboard.Users().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_usersMouseClicked
-
     private void accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseClicked
-       new UserDashboard.Account().setVisible(true);
+       new UserDashboard.Account(id, name, email, status).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_accountMouseClicked
 
@@ -145,7 +144,7 @@ public class Sales extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Sales().setVisible(true);
+                new Dashboard("", "", "", "").setVisible(true);
             }
         });
     }
@@ -153,10 +152,10 @@ public class Sales extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel account;
     private javax.swing.JLabel dashboard;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel sales;
-    private javax.swing.JLabel users;
     // End of variables declaration//GEN-END:variables
 }

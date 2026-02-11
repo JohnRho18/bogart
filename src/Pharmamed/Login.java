@@ -32,6 +32,17 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btn_login = new javax.swing.JButton();
         txt_password = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -45,11 +56,23 @@ public class Login extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Username:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 20));
 
+        txt_username.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, -1));
+
+        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
         jLabel2.setText("Password:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, 20));
 
+        btn_login.setBackground(new java.awt.Color(0, 102, 102));
+        btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Login");
         btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -61,53 +84,61 @@ public class Login extends javax.swing.JFrame {
                 btn_loginActionPerformed(evt);
             }
         });
+        jPanel2.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 170, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_username, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                            .addComponent(txt_password))
-                        .addGap(134, 134, 134))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_login)
-                        .addGap(162, 162, 162))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txt_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_login)
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        txt_password.setBackground(new java.awt.Color(0, 204, 204));
+        txt_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_passwordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 110, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 30, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel5.setText("jLabel4");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 30, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel6.setText("jLabel4");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 30, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel7.setText("jLabel4");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 50, 20));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel8.setText("jLabel4");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 10, 10));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel9.setText("jLabel4");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 30, 30));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel10.setText("jLabel4");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 10, 10));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel11.setText("jLabel4");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 30, 10));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel12.setText("jLabel4");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 20, 50));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
+        jLabel13.setText("jLabel4");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 20, 40));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register.png"))); // NOI18N
+        jLabel14.setText("jLabel14");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 420, 310));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 304));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,14 +154,18 @@ try {
     
     java.sql.ResultSet rs = pst.executeQuery();
     
-// Locate line 121 in Login.java
 if (rs.next()) {
-    // This creates and opens the Dashboard window instead of Account or Landing
-    UserDashboard.Dashboard dash = new UserDashboard.Dashboard(); 
-    dash.setVisible(true);
-    
-    // This closes the Login window so it doesn't stay open in the background
-    this.dispose(); 
+    String uId = rs.getString("a_id");
+    String uName = rs.getString("name");
+    String uEmail = rs.getString("email");
+    String uStatus = rs.getString("status");
+
+    if (uStatus.equalsIgnoreCase("admin")) {
+        new AdminDashboard.adminDashboard(uId, uName, uEmail, uStatus).setVisible(true);
+    } else {
+        new UserDashboard.Dashboard(uId, uName, uEmail, uStatus).setVisible(true);
+    }
+    this.dispose();
 } else {
         javax.swing.JOptionPane.showMessageDialog(null, "Invalid Username or Password");
     }
@@ -143,6 +178,10 @@ if (rs.next()) {
     private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_loginMouseClicked
+
+    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +221,18 @@ if (rs.next()) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField txt_password;
