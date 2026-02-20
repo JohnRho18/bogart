@@ -13,6 +13,7 @@ public class Users extends javax.swing.JFrame {
     String id, name, email, status;
 
     public Users(String uId, String uName, String uEmail, String uStatus) {
+        
         initComponents();
         config conf = new config();
         conn = conf.connectDB();
@@ -112,6 +113,7 @@ public class Users extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 private void updateTable() {
     try {

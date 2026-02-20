@@ -5,6 +5,7 @@ public class Account extends javax.swing.JFrame {
 String id, name, email, status;
 
     public Account(String uId, String uName, String uEmail, String uStatus) {
+        
         initComponents();
         this.id = uId;
         this.name = uName;
@@ -183,6 +184,7 @@ String id, name, email, status;
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked

@@ -14,6 +14,7 @@ public class landing extends javax.swing.JFrame {
     String name, email, type;
 
     public landing(String uName, String uEmail, String uType) {
+        
         initComponents();
         this.name = uName;
         this.email = uEmail;
@@ -112,6 +113,7 @@ public class landing extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_goLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_goLogin1ActionPerformed

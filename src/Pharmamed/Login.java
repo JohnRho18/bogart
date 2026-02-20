@@ -60,14 +60,14 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(153, 255, 255));
         jLabel1.setText("Username:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 20));
 
         txt_username.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel2.setForeground(new java.awt.Color(153, 255, 255));
         jLabel2.setText("Password:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, 20));
 
@@ -112,7 +112,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
         jLabel8.setText("jLabel4");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 10, 10));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 10, 10));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
         jLabel9.setText("jLabel4");
@@ -120,11 +120,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
         jLabel10.setText("jLabel4");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 10, 10));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 10, 10));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
         jLabel11.setText("jLabel4");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 30, 10));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 30, 10));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/SKYBLUELIGHT.png"))); // NOI18N
         jLabel12.setText("jLabel4");
@@ -135,12 +135,12 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 20, 40));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register.png"))); // NOI18N
-        jLabel14.setText("jLabel14");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 420, 310));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 304));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
