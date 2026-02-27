@@ -5,6 +5,10 @@
  */
 package UserDashboard;
 
+import Pharmamed.Login;
+import config.Session;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author USER17
@@ -17,13 +21,18 @@ public class Dashboard extends javax.swing.JFrame {
 String id, name, email, status;
 
 public Dashboard(String uId, String uName, String uEmail, String uStatus) {
+    if (Session.getInstance().getUid() == null) {
+        JOptionPane.showMessageDialog(null, "Login first!");
+        new Login().setVisible(true);
+        this.dispose();
+    } else {
     initComponents();
     this.id = uId;
     this.name = uName;
     this.email = uEmail;
     this.status = uStatus;
 }
-
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

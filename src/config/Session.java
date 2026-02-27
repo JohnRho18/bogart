@@ -16,11 +16,6 @@ public class Session {
         return instance;
     }
 
-    public static void setInstance(Session newInstance) {
-        instance = newInstance;
-    }
-
- 
     public String getUid() { return uid; }
     public void setUid(String uid) { this.uid = uid; }
     

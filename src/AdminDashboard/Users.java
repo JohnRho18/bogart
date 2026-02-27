@@ -1,10 +1,19 @@
 package AdminDashboard;
-
+import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import net.proteanit.sql.DbUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import net.proteanit.sql.DbUtils;
 import config.config;
+
+import javax.swing.JOptionPane;
+import config.Session;
+import Pharmamed.Login;
 
 public class Users extends javax.swing.JFrame {
     Connection conn = null;
@@ -13,7 +22,11 @@ public class Users extends javax.swing.JFrame {
     String id, name, email, status;
 
     public Users(String uId, String uName, String uEmail, String uStatus) {
-        
+    if (Session.getInstance().getUid() == null) {
+        JOptionPane.showMessageDialog(null, "Login first!");
+        new Login().setVisible(true);
+        this.dispose();
+    } else {
         initComponents();
         config conf = new config();
         conn = conf.connectDB();
@@ -23,8 +36,11 @@ public class Users extends javax.swing.JFrame {
         this.status = uStatus;
         updateTable();
         
+        
+        
     }
-
+    
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +53,12 @@ public class Users extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        searchbar = new javax.swing.JTextField();
+        edit = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
+        add = new javax.swing.JButton();
+        searchbutton = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         AdminDashboard = new javax.swing.JLabel();
         users = new javax.swing.JLabel();
@@ -60,9 +82,61 @@ public class Users extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 230, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, 200));
+
+        searchbar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchbarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 190, 30));
+
+        edit.setText("EDIT");
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 60, 30));
+
+        delete.setText("DEL");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 60, 30));
+
+        refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+        jPanel1.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 50, 30));
+
+        add.setText("ADD");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 60, 30));
+
+        searchbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search (1).png"))); // NOI18N
+        searchbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchbuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 40, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
         jLabel11.setText("jLabel8");
@@ -115,14 +189,50 @@ public class Users extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-private void updateTable() {
+  public void updateTable() {
     try {
-        String sql = "SELECT a_id, name, email, status FROM tbl_accounts";
+        String sql = "SELECT a_id, name, email, type, status FROM tbl_accounts";
         pst = conn.prepareStatement(sql);
         rs = pst.executeQuery();
-        jTable1.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs)); 
-    } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(null, e);
+        jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+}
+    
+    private void manageUser(String action, String u_id) {
+    javax.swing.JTextField nameF = new javax.swing.JTextField();
+    javax.swing.JTextField emailF = new javax.swing.JTextField();
+    javax.swing.JComboBox<String> statusF = new javax.swing.JComboBox<>(new String[]{"Active", "Pending"});
+
+    if (action.equals("Edit")) {
+        int row = jTable1.getSelectedRow();
+        nameF.setText(jTable1.getValueAt(row, 1).toString());
+        emailF.setText(jTable1.getValueAt(row, 2).toString());
+        statusF.setSelectedItem(jTable1.getValueAt(row, 3).toString());
+    }
+
+    Object[] inputFields = { "Name:", nameF, "Email:", emailF, "Status:", statusF };
+
+    int result = javax.swing.JOptionPane.showConfirmDialog(null, inputFields, action + " User", javax.swing.JOptionPane.OK_CANCEL_OPTION);
+    
+    if (result == javax.swing.JOptionPane.OK_OPTION) {
+        try {
+            String sql = action.equals("Add") 
+                ? "INSERT INTO tbl_accounts (name, email, status) VALUES (?, ?, ?)"
+                : "UPDATE tbl_accounts SET name=?, email=?, status=? WHERE a_id=?";
+            
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, nameF.getText());
+            pst.setString(2, emailF.getText());
+            pst.setString(3, statusF.getSelectedItem().toString());
+            if (action.equals("Edit")) pst.setString(4, u_id);
+
+            pst.executeUpdate();
+            updateTable();
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, e);
+        }
     }
 }
     private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked
@@ -139,6 +249,68 @@ private void updateTable() {
         new AdminDashboard.Account(id, name, email, status).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_accountMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        manageUser("Add", null);
+    }//GEN-LAST:event_addActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        int row = jTable1.getSelectedRow();
+    if (row != -1) {
+        manageUser("Edit", jTable1.getValueAt(row, 0).toString());
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(null, "Select a user first");
+    }
+    }//GEN-LAST:event_editActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+
+    int row = jTable1.getSelectedRow();
+    if (row != -1) {
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(null, "Delete this record?", "Confirm", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            try {
+                pst = conn.prepareStatement("DELETE FROM tbl_accounts WHERE a_id = ?");
+                pst.setString(1, jTable1.getValueAt(row, 0).toString());
+                pst.executeUpdate();
+                updateTable();
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
+
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+
+    searchbar.setText("");
+    updateTable();
+    }//GEN-LAST:event_refreshActionPerformed
+
+    private void searchbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchbuttonActionPerformed
+
+    private void searchbarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchbarKeyReleased
+                                    
+    try {
+        String query = searchbar.getText();
+        String sql = "SELECT a_id, name, email, status FROM tbl_accounts WHERE name LIKE ? OR email LIKE ?";
+        pst = conn.prepareStatement(sql);
+        pst.setString(1, "%" + query + "%");
+        pst.setString(2, "%" + query + "%");
+        rs = pst.executeQuery();
+        jTable1.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs)); 
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(null, e);
+    }
+
+    }//GEN-LAST:event_searchbarKeyReleased
     
     /**
      * @param args the command line arguments
@@ -154,12 +326,18 @@ public static void main(String args[]) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminDashboard;
     private javax.swing.JLabel account;
+    private javax.swing.JButton add;
+    private javax.swing.JButton delete;
+    private javax.swing.JButton edit;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton refresh;
+    private javax.swing.JTextField searchbar;
+    private javax.swing.JButton searchbutton;
     private javax.swing.JLabel users;
     // End of variables declaration//GEN-END:variables
 }

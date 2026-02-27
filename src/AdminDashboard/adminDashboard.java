@@ -4,22 +4,26 @@
  */
 package AdminDashboard;
 
-/**
- *
- * @author John Rho
- */
+import javax.swing.JOptionPane;
+import config.Session;
+import Pharmamed.Login;
+
 public class adminDashboard extends javax.swing.JFrame {
     String id, name, email, status;
 
-    public adminDashboard(String uId, String uName, String uEmail, String uStatus) {
-        initComponents();
+public adminDashboard(String uId, String uName, String uEmail, String uStatus) {
+    if (Session.getInstance().getUid() == null) {
+        JOptionPane.showMessageDialog(null, "Login first!");
+        new Login().setVisible(true);
+        this.dispose();
+    } else {
+        initComponents(); 
         this.id = uId;
         this.name = uName;
         this.email = uEmail;
         this.status = uStatus;
-        
     }
-
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,7 +127,7 @@ public class adminDashboard extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new adminDashboard("", "", "", "").setVisible(true);
+               new adminDashboard(null, null, null, null).setVisible(true);
             }
         });
     }

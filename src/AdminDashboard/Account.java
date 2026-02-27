@@ -1,11 +1,19 @@
 package AdminDashboard;
 
+import javax.swing.JOptionPane;
+import config.Session;
+import Pharmamed.Login;
+
 public class Account extends javax.swing.JFrame {
 
 String id, name, email, status;
 
     public Account(String uId, String uName, String uEmail, String uStatus) {
-        
+    if (Session.getInstance().getUid() == null) {
+        JOptionPane.showMessageDialog(null, "Login first!");
+        new Login().setVisible(true);
+        this.dispose();
+    } else {
         initComponents();
         this.id = uId;
         this.name = uName;
@@ -17,6 +25,7 @@ String id, name, email, status;
         display_email.setText(email);
         display_status.setText(status);
         
+    }
     }
    /**
      * This method is called from within the constructor to initialize the form.

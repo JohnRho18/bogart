@@ -155,15 +155,18 @@ try {
     java.sql.ResultSet rs = pst.executeQuery();
     
 if (rs.next()) {
-    String uId = rs.getString("a_id");
-    String uName = rs.getString("name");
-    String uEmail = rs.getString("email");
-    String uStatus = rs.getString("status");
-
-    if (uStatus.equalsIgnoreCase("admin")) {
-        new AdminDashboard.adminDashboard(uId, uName, uEmail, uStatus).setVisible(true);
+    config.Session ses = config.Session.getInstance();
+    
+    ses.setUid(rs.getString("a_id")); 
+    ses.setName(rs.getString("name"));
+    ses.setEmail(rs.getString("email"));
+    ses.setStatus(rs.getString("status"));
+    
+    String status = rs.getString("status");
+    if (status.equals("admin")) {
+        new AdminDashboard.adminDashboard(ses.getUid(), ses.getName(), ses.getEmail(), ses.getStatus()).setVisible(true);
     } else {
-        new UserDashboard.Dashboard(uId, uName, uEmail, uStatus).setVisible(true);
+        new UserDashboard.Dashboard(ses.getUid(), ses.getName(), ses.getEmail(), ses.getStatus()).setVisible(true);
     }
     this.dispose();
 } else {
