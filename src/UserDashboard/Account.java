@@ -222,19 +222,35 @@ public Account(String uId, String uName, String uEmail, String uStatus) {
     }//GEN-LAST:event_salesMouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        javax.swing.JTextField nameF = new javax.swing.JTextField(name);
+    javax.swing.JTextField emailF = new javax.swing.JTextField(email);
+    
+    Object[] fields = {
+        "Username:", nameF,
+        "Email:", emailF
+    };
 
-    String newName = javax.swing.JOptionPane.showInputDialog("Enter New Username:", name);
-    if (newName != null && !newName.isEmpty()) {
-        this.name = newName;
-        jLabel13.setText(name);
+    int result = javax.swing.JOptionPane.showConfirmDialog(null, fields, "Edit Account Information", javax.swing.JOptionPane.OK_CANCEL_OPTION);
+    
+    if (result == javax.swing.JOptionPane.OK_OPTION) {
+        String newName = nameF.getText();
+        String newEmail = emailF.getText();
+        
+        if (!newName.isEmpty() && !newEmail.isEmpty()) {
+            config.config conf = new config.config();
+            String sql = "UPDATE tbl_accounts SET name = '" + newName + "', email = '" + newEmail + "' WHERE a_id = '" + id + "'";
+            conf.updateData(sql);
+            
+            this.name = newName;
+            this.email = newEmail;
+            display_name.setText(name);
+            display_email.setText(email);
+            
+            javax.swing.JOptionPane.showMessageDialog(null, "Account Updated Successfully");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Fields cannot be empty!");
+        }
     }
-
-    String newEmail = javax.swing.JOptionPane.showInputDialog("Enter New Email:", email);
-    if (newEmail != null && !newEmail.isEmpty()) {
-        this.email = newEmail;
-        jLabel14.setText(email);
-    }
-
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void display_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_display_idMouseClicked

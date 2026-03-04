@@ -60,14 +60,16 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setText("Username:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, 20));
 
         txt_username.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 110, -1));
 
-        jLabel2.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel2.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
         jLabel2.setText("Password:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, 20));
 
@@ -163,7 +165,7 @@ if (rs.next()) {
     ses.setStatus(rs.getString("status"));
     
     String status = rs.getString("status");
-    if (status.equals("admin")) {
+    if (status.equals("Admin")) {
         new AdminDashboard.adminDashboard(ses.getUid(), ses.getName(), ses.getEmail(), ses.getStatus()).setVisible(true);
     } else {
         new UserDashboard.Dashboard(ses.getUid(), ses.getName(), ses.getEmail(), ses.getStatus()).setVisible(true);

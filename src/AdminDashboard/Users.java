@@ -65,6 +65,7 @@ public class Users extends javax.swing.JFrame {
         account = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        AdminDashboard1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,6 +83,7 @@ public class Users extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setGridColor(new java.awt.Color(204, 255, 255));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -184,6 +186,17 @@ public class Users extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 270, 300));
 
+        AdminDashboard1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        AdminDashboard1.setForeground(new java.awt.Color(0, 153, 153));
+        AdminDashboard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AdminDashboard1.setText("ADMIN DASHBOARD");
+        AdminDashboard1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AdminDashboard1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(AdminDashboard1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 130, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
@@ -203,7 +216,7 @@ public class Users extends javax.swing.JFrame {
     private void manageUser(String action, String u_id) {
     javax.swing.JTextField nameF = new javax.swing.JTextField();
     javax.swing.JTextField emailF = new javax.swing.JTextField();
-    javax.swing.JComboBox<String> statusF = new javax.swing.JComboBox<>(new String[]{"Active", "Pending"});
+    javax.swing.JComboBox<String> statusF = new javax.swing.JComboBox<>(new String[]{"Admin", "User"});
 
     if (action.equals("Edit")) {
         int row = jTable1.getSelectedRow();
@@ -311,6 +324,10 @@ public class Users extends javax.swing.JFrame {
     }
 
     }//GEN-LAST:event_searchbarKeyReleased
+
+    private void AdminDashboard1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdminDashboard1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdminDashboard1MouseClicked
     
     /**
      * @param args the command line arguments
@@ -325,6 +342,7 @@ public static void main(String args[]) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminDashboard;
+    private javax.swing.JLabel AdminDashboard1;
     private javax.swing.JLabel account;
     private javax.swing.JButton add;
     private javax.swing.JButton delete;

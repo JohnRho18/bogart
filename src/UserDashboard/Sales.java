@@ -7,6 +7,7 @@ package UserDashboard;
 
 import Pharmamed.Login;
 import config.Session;
+import config.config;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +29,7 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
     this.name = uName;
     this.email = uEmail;
     this.status = uStatus;
+    displaySales();
 }
 }
     /**
@@ -40,9 +42,17 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        salesrecord = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        searchbar = new javax.swing.JTextField();
+        edit = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         dashboard = new javax.swing.JLabel();
         sales = new javax.swing.JLabel();
+        recordsale = new javax.swing.JLabel();
         account = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -51,6 +61,61 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salesrecord.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(salesrecord);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 230, 230));
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search (1).png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 20, 30));
+
+        searchbar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchbarActionPerformed(evt);
+            }
+        });
+        searchbar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchbarKeyReleased(evt);
+            }
+        });
+        jPanel1.add(searchbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 140, 30));
+
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit_1.png"))); // NOI18N
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 30, 30));
+
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 30, 30));
+
+        refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+        jPanel1.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 30, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/skyblueverylight.png"))); // NOI18N
         jLabel11.setText("jLabel8");
@@ -76,7 +141,18 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
                 salesMouseClicked(evt);
             }
         });
-        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 130, -1));
+        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 130, -1));
+
+        recordsale.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        recordsale.setForeground(new java.awt.Color(0, 153, 153));
+        recordsale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        recordsale.setText("RECORD SALES");
+        recordsale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recordsaleMouseClicked(evt);
+            }
+        });
+        jPanel1.add(recordsale, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 130, -1));
 
         account.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         account.setForeground(new java.awt.Color(0, 153, 153));
@@ -103,7 +179,15 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void displaySales() {
+    try {
+        config conf = new config();
+        java.sql.ResultSet rs = conf.getData("SELECT * FROM tbl_sales");
+        salesrecord.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
+    } catch (java.sql.SQLException e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+}
     private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked
         new UserDashboard.Sales(id, name, email, status).setVisible(true);
         this.dispose();         
@@ -122,6 +206,63 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
        new UserDashboard.Account(id, name, email, status).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_accountMouseClicked
+
+    private void recordsaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recordsaleMouseClicked
+        new UserDashboard.Recordsale(id, name, email, status).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_recordsaleMouseClicked
+
+    private void searchbarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchbarKeyReleased
+        try {
+        config conf = new config();
+        String sql = "SELECT * FROM tbl_sales WHERE m_name LIKE '%" + searchbar.getText() + "%'";
+        salesrecord.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(conf.getData(sql)));
+    } catch (java.sql.SQLException e) {
+        System.out.println(e.getMessage());
+    }
+    }//GEN-LAST:event_searchbarKeyReleased
+
+    private void searchbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchbarActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        int row = salesrecord.getSelectedRow();
+    if (row != -1) {
+        int id = Integer.parseInt(salesrecord.getValueAt(row, 0).toString());
+        config conf = new config();
+        conf.deleteData(id, "tbl_sales", "s_id");
+        displaySales();
+    }
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+        int row = salesrecord.getSelectedRow();
+    
+    if (row == -1) {
+        javax.swing.JOptionPane.showMessageDialog(null, "Please select a record from the table first!");
+    } else {
+        String s_id = salesrecord.getValueAt(row, 0).toString();
+        String m_name = salesrecord.getValueAt(row, 1).toString();
+        String m_expiry = salesrecord.getValueAt(row, 2).toString();
+        String m_qty = salesrecord.getValueAt(row, 3).toString();
+        String m_price = salesrecord.getValueAt(row, 4).toString();
+        String m_change = salesrecord.getValueAt(row, 5).toString();
+
+        Recordsale rsForm = new Recordsale(id, name, email, status);
+        rsForm.setVisible(true);
+        rsForm.setFields(s_id, m_name, m_expiry, m_qty, m_price, m_change);
+
+        rsForm.transferId = s_id; 
+        
+        this.dispose();
+    }
+    }//GEN-LAST:event_editActionPerformed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        searchbar.setText("");
+        displaySales();
+    }//GEN-LAST:event_refreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,10 +303,18 @@ public Sales(String uId, String uName, String uEmail, String uStatus) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel account;
     private javax.swing.JLabel dashboard;
+    private javax.swing.JButton delete;
+    private javax.swing.JButton edit;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel recordsale;
+    private javax.swing.JButton refresh;
     private javax.swing.JLabel sales;
+    private javax.swing.JTable salesrecord;
+    private javax.swing.JTextField searchbar;
     // End of variables declaration//GEN-END:variables
 }

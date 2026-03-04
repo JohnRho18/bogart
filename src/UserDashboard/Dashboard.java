@@ -46,6 +46,7 @@ public Dashboard(String uId, String uName, String uEmail, String uStatus) {
         jLabel11 = new javax.swing.JLabel();
         dashboard = new javax.swing.JLabel();
         sales = new javax.swing.JLabel();
+        recordsale = new javax.swing.JLabel();
         account = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -79,7 +80,18 @@ public Dashboard(String uId, String uName, String uEmail, String uStatus) {
                 salesMouseClicked(evt);
             }
         });
-        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 130, -1));
+        jPanel1.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 130, -1));
+
+        recordsale.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        recordsale.setForeground(new java.awt.Color(0, 153, 153));
+        recordsale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        recordsale.setText("RECORD SALES");
+        recordsale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recordsaleMouseClicked(evt);
+            }
+        });
+        jPanel1.add(recordsale, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 130, -1));
 
         account.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         account.setForeground(new java.awt.Color(0, 153, 153));
@@ -124,6 +136,11 @@ public Dashboard(String uId, String uName, String uEmail, String uStatus) {
         // TODO add your handling code here:
     }//GEN-LAST:event_accountMouseClicked
 
+    private void recordsaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recordsaleMouseClicked
+        new UserDashboard.Recordsale(id, name, email, status).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_recordsaleMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -166,6 +183,7 @@ public Dashboard(String uId, String uName, String uEmail, String uStatus) {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel recordsale;
     private javax.swing.JLabel sales;
     // End of variables declaration//GEN-END:variables
 }
